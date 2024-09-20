@@ -7,12 +7,10 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[HomeController::class,'home']);
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('home.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -24,7 +22,10 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::get('admin/dashboard',[HomeController::class,'index'])->middleware(['auth','admin']);
-
+Route::get('/category', [HomeController::class, 'category'])->name('home.category');
+Route::get('/order', [HomeController::class, 'order'])->name('home.order');
+Route::get('/maid-service', [ServiceController::class, 'showMaidService'])->name('home.maidservice');
+Route::get('/deep-cleaning-service', [ServiceController::class, 'showDeepCleaningService'])->name('home.deepcleaningservice');
 Route::get('view_category',[CategoryController::class,'view_category'])->middleware(['auth','admin']);
 Route::post('add_category',[CategoryController::class,'add_category'])->middleware(['auth','admin']);
 Route::get('delete_category/{id}',[CategoryController::class,'delete_category'])->middleware(['auth','admin']);
