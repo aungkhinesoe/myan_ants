@@ -74,7 +74,7 @@
 
         /* Cards Section */
         .cards-section {
-            
+
             text-align: center;
         }
 
@@ -140,21 +140,15 @@
     <div class="cards-section">
         <h2>Category</h2>
         <div class="cards-container">
-            <!-- Maid Card -->
-            <div class="card">
-                <h3>Maid</h3>
-                <img src="https://via.placeholder.com/150" alt="Maid Service">
-                <p>Professional Maid Services</p>
-                <a href="{{ route('home.maidservice') }}">View Maid Service</a>
-            </div>
 
-            <!-- Deep Cleaning Card -->
-            <div class="card">
-                <h3>Deep Cleaning</h3>
-                <img src="https://via.placeholder.com/150" alt="Deep Cleaning Service">
-                <p>Thorough Cleaning Services</p>
-                <a href="{{ route('home.deepcleaningservice') }}">View Deep Cleaning Service</a>
-            </div>
+            @foreach ($category_items as $category_item)
+                <div class="card">
+                    <h3>{{$category_item->category_name}}</h3>
+                    <img height="150" src="categories/{{$category_item->image}}" alt="Maid Service">
+                    <a href="{{ route('home.maidservice') }}">View Services</a>
+                </div>
+            @endforeach
+
         </div>
     </div>
 

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\OrderController;
@@ -37,3 +38,5 @@ Route::get('add_service',[ServiceController::class,'add_service'])->middleware([
 Route::post('upload_service',[ServiceController::class,'upload_service'])->middleware(['auth','admin']);
 Route::get('view_service',[ServiceController::class,'view_service'])->middleware(['auth','admin']);
 Route::get('delete_service/{id}',[ServiceController::class,'delete_service'])->middleware(['auth','admin']);
+
+Route::post('confirm-order',[OrderController::class,'confirm_order'])->middleware(['auth']);
