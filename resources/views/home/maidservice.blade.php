@@ -161,6 +161,8 @@
                         <input type="text" id="selectedService" name="service" readonly>
                     </div>
 
+                    <input type="hidden" name="service_id" value="{{ $service->id }}">
+
                     <button type="submit" class="btn-order">Confirm Order</button>
                 </form>
             @else
@@ -180,7 +182,7 @@
             document.getElementById("orderModal").style.display = "none";
         }
 
-       
+
         window.onclick = function(event) {
             var modal = document.getElementById("orderModal");
             if (event.target == modal) {

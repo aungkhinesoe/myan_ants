@@ -35,12 +35,19 @@ class OrderController extends Controller
         $order->save();
 
         // Send notification to admin(s)
-        $admin = User::where('role', 'admin')->first(); // Assuming you have a role-based system
-        if ($admin) {
-            $admin->notify(new NewOrderNotification($order));
-        }
+        // $admin = User::where('role', 'admin')->first(); // Assuming you have a role-based system
+        // if ($admin) {
+        //     $admin->notify(new NewOrderNotification($order));
+        // }
 
         // Redirect back with a success message
         return redirect()->back()->with('success', 'Your order has been successfully placed!');
+    }
+
+    public function view_orders()
+    {
+        $orders = Order::all();
+
+        return view('admin.orders' ,compact('orders'));
     }
 }

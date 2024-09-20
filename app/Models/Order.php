@@ -12,4 +12,14 @@ class Order extends Model
     protected $fillable = [
         'name', 'email', 'phone', 'address', 'service',
     ];
+
+    public function user()
+    {
+        return $this->hasOne('App\Models\User','id','user_id');
+    }
+
+    public function service()
+    {
+        return $this->hasOne('App\Models\Service','id','service_id');
+    }
 }

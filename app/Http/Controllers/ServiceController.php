@@ -11,8 +11,8 @@ class ServiceController extends Controller
     // Show Maid Services
     public function showMaidService()
     {
-        // Fetch services where category is 'Maid'
-        $services = Service::where('category', 'Maid')->get();
+        // Fetch services where category is 'Maid Services'
+        $services = Service::where('category', 'Maid Services')->get();
 
         // Return the maidservice view with the services data
         return view('home.maidservice', compact('services'));

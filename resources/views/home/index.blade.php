@@ -141,13 +141,18 @@
         <h2>Category</h2>
         <div class="cards-container">
 
+            @if (isset($category_items) && count($category_items) > 0)
             @foreach ($category_items as $category_item)
                 <div class="card">
-                    <h3>{{$category_item->category_name}}</h3>
-                    <img height="150" src="categories/{{$category_item->image}}" alt="Maid Service">
+                    <h3>{{ $category_item->category_name }}</h3>
+                    <img height="150" src="categories/{{ $category_item->image }}" alt="Maid Service">
                     <a href="{{ route('home.maidservice') }}">View Services</a>
                 </div>
             @endforeach
+        @else
+            <p>No categories available</p>
+        @endif
+
 
         </div>
     </div>
