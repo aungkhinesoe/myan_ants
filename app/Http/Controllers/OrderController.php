@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\Service;
+use App\Models\User;
+use App\Notifications\NewOrderNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -31,6 +33,12 @@ class OrderController extends Controller
 
         // Save the order to the database
         $order->save();
+
+        // Send notification to admin(s)
+        $admin = User::where('role', 'admin')->first(); // Assuming you have a role-based system
+        if ($admin) {
+            $admin->notify(new NewOrderNotification($order));
+        }
 
         // Redirect back with a success message
         return redirect()->back()->with('success', 'Your order has been successfully placed!');

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
+use function Flasher\Toastr\Prime\toastr;
+
 class CategoryController extends Controller
 {
     public function view_category()
@@ -28,6 +30,8 @@ class CategoryController extends Controller
             $category->image = $imagename;
         }
 
+        toastr()->success('Category Created Successfully!');
+
         $category->save();
 
         return redirect()->back();
@@ -46,6 +50,8 @@ class CategoryController extends Controller
 
         $category_item->category_name = $request->category;
 
+        toastr()->success('Category Updated Successfully!');
+
         $category_item->save();
 
         return redirect('/view_category');
@@ -56,6 +62,8 @@ class CategoryController extends Controller
         $category_item = Category::find($id);
 
         $category_item->delete();
+
+        toastr()->success('Category Deleted Successfully!');
 
         return redirect()->back();
     }
