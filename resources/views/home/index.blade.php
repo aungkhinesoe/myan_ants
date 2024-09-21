@@ -126,32 +126,37 @@
     <!-- Include Header -->
     @include('home.header')
 
-  <div class="background">
-        <div class="hero-content">
-            <h1>MyanAnts</h1>
-            <p>Your trusted partner for home and office cleaning services in Myanmar!</p>
-            <div class="search-bar">
-                <input type="text" placeholder="Find your service here.">
-                <button>Search</button>
-            </div>
-        </div>
+<div class="background">
+    <div class="hero-content">
+        <h1>MyanAnts</h1>
+        <p>Your trusted partner for home and office cleaning services in Myanmar!</p>
+        <form action="{{ route('search') }}" method="GET" class="search-bar">
+            <input type="text" name="query" placeholder="Find your service here." required>
+            <button type="submit">Search</button>
+        </form>
     </div>
+</div>
+
 
     <!-- Cards Section -->
     <div class="cards-section">
         <h2>Category</h2>
         <div class="cards-container">
 
-            @if (isset($category_items) && count($category_items) > 0)
+        @if (isset($category_items) && count($category_items) > 0)
             @foreach ($category_items as $category_item)
                 <div class="card">
                     <h3>{{ $category_item->category_name }}</h3>
-                    <img height="150" src="categories/{{ $category_item->image }}" alt="Maid Service">
-                    <a href="{{ route('home.maidservice') }}">View Services</a>
+                    <img height="150" src="categories/{{ $category_item->image }}" alt="{{ $category_item->category_name }}">
+                    @if ($category_item->category_name === 'Maid Services')
+                    <a href="{{ route('home.maidservice') }}">View Maid Services</a>
+                    @elseif ($category_item->category_name === 'Deep Cleaning Services')
+                    <a href="{{ route('home.deepcleaningservice') }}">View Deep Cleaning Services</a>
+                    @endif
                 </div>
             @endforeach
         @else
-            <p>No categories available</p>
+         <p>No categories available</p>
         @endif
 
 
