@@ -30,7 +30,7 @@ class CategoryController extends Controller
             $category->image = $imagename;
         }
 
-        toastr()->success('Category Created Successfully!');
+        // toastr()->success('Category Created Successfully!');
 
         $category->save();
 

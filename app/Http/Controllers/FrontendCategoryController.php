@@ -14,5 +14,4 @@ class FrontendCategoryController extends Controller
 
         return view('home.index', compact('category_items'));
     }
-
-}
+}    

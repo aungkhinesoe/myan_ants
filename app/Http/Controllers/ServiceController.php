@@ -13,7 +13,7 @@ class ServiceController extends Controller
     {
         // Fetch services where category is 'Maid Services'
         $services = Service::where('category', 'Maid Services')->get();
-
+     
         // Return the maidservice view with the services data
         return view('home.maidservice', compact('services'));
     }
@@ -22,7 +22,7 @@ class ServiceController extends Controller
     public function showDeepCleaningService()
     {
         // Fetch services where category is 'Deep Cleaning'
-        $services = Service::where('category', 'Deep Cleaning')->get();
+        $services = Service::where('category', 'Deep Cleaning Services')->get();
 
         // Return the deepcleaningservice view with the services data
         return view('home.deepcleaningservice', compact('services'));

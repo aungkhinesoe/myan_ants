@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\SearchController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
@@ -47,3 +48,5 @@ Route::get('delete_service/{id}',[ServiceController::class,'delete_service'])->m
 
 Route::post('confirm-order',[OrderController::class,'confirm_order'])->middleware(['auth']);
 Route::get('view-orders',[OrderController::class,'view_orders'])->middleware(['auth']);
+Route::get('/my-orders', [OrderController::class, 'my_orders'])->middleware('auth')->name('home.order');
+Route::get('/search', [SearchController::class, 'search'])->name('search');
