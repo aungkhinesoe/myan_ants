@@ -12,8 +12,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[HomeController::class,'home']);
 
 Route::get('/dashboard', function () {
-    return view('home.index');
     $category_items = Category::all();
+
     return view('home.index' , compact('category_items'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
