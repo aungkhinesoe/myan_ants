@@ -20,10 +20,10 @@
           <button class="sidebar-toggle"><i class="fa fa-long-arrow-left"></i></button>
         </div>
 
-        <div class="notification-icon">
+        {{-- <div class="notification-icon">
             <i class="fas fa-bell"></i>
             <span class="badge badge-danger">3</span> <!-- Hardcoded test value -->
-        </div>
+        </div> --}}
 
         <div class="right-menu list-inline no-margin-bottom">
 

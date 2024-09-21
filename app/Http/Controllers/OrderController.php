@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NotificationEvent;
 use App\Models\Order;
 use App\Models\Service;
 use App\Models\User;
@@ -33,6 +34,9 @@ class OrderController extends Controller
 
         // Save the order to the database
         $order->save();
+
+        // Send notification to admin(s)
+        // broadcast(new NotificationEvent('Received a New Order!'));
 
         // Send notification to admin(s)
         // $admin = User::where('role', 'admin')->first(); // Assuming you have a role-based system
