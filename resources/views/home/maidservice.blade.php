@@ -114,7 +114,8 @@
 
                         <!-- Order Now Button -->
                         @if(Auth::check())
-                            <button class="btn-order" onclick="openModal('{{ $service->title }}')">Order Now</button>
+                        <button class="btn-order" onclick="openModal('{{ $service->title }}', '{{ $service->id }}')">Order Now</button>
+                            <!-- <button class="btn-order" onclick="openModal('{{ $service->title }}')">Order Now</button> -->
                         @else
                             <a href="{{ route('login') }}" class="btn-order">Order Now</a>
                         @endif
@@ -161,7 +162,8 @@
                         <input type="text" id="selectedService" name="service" readonly>
                     </div>
 
-                    <input type="hidden" name="service_id" value="{{ $service->id }}">
+                    <!-- <input type="hidden" name="service_id" value="{{-- $service->id --}}"> -->
+                    <input type="hidden" name="service_id">
 
                     <button type="submit" class="btn-order">Confirm Order</button>
                 </form>
@@ -173,10 +175,12 @@
     </div>
 
     <script>
-        function openModal(serviceTitle) {
-            document.getElementById("orderModal").style.display = "block";
-            document.getElementById("selectedService").value = serviceTitle;
+        function openModal(serviceTitle, serviceId) {
+        document.getElementById("orderModal").style.display = "block";
+        document.getElementById("selectedService").value = serviceTitle;
+        document.querySelector('input[name="service_id"]').value = serviceId; // Set service_id in hidden input
         }
+
 
         function closeModal() {
             document.getElementById("orderModal").style.display = "none";

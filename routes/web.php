@@ -6,12 +6,15 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/',[HomeController::class,'home']);
 
 Route::get('/dashboard', function () {
     return view('home.index');
+    $category_items = Category::all();
+    return view('home.index' , compact('category_items'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
