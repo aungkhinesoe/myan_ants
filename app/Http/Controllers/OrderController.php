@@ -50,4 +50,12 @@ class OrderController extends Controller
 
         return view('admin.orders' ,compact('orders'));
     }
+    
+    public function my_orders()
+    {
+    $orders = Order::where('user_id', Auth::id())->get();
+    return view('home.order', compact('orders'));
+    }
+
+
 }

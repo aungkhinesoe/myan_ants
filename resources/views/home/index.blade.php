@@ -109,6 +109,7 @@
             object-fit: cover;
             margin: 20px 0;
             border-radius: 8px;
+            
         }
 
         .card a {

@@ -47,3 +47,4 @@ Route::get('delete_service/{id}',[ServiceController::class,'delete_service'])->m
 
 Route::post('confirm-order',[OrderController::class,'confirm_order'])->middleware(['auth']);
 Route::get('view-orders',[OrderController::class,'view_orders'])->middleware(['auth']);
+Route::get('/my-orders', [OrderController::class, 'my_orders'])->middleware('auth')->name('home.order');
