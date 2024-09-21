@@ -55,7 +55,6 @@
         cursor: pointer;
     }
 
-    /* Dropdown content (hidden by default) */
     .dropdown-content {
         display: none;
         position: absolute;
@@ -65,7 +64,6 @@
         z-index: 1;
     }
 
-    /* Links inside the dropdown */
     .dropdown-content a {
         color: #000000;
         padding: 12px 16px;
@@ -73,22 +71,18 @@
         display: block;
     }
 
-    /* Change color of dropdown links on hover */
     .dropdown-content a:hover {
         background-color: #e2e6ea;
     }
 
-    /* Show the dropdown menu on hover */
     .dropdown:hover .dropdown-content {
         display: block;
     }
 
-    /* Optional: Change the background color of the button when dropdown is open */
     .dropdown:hover .dropdown-button {
         background-color: #e2e6ea;
     }
 
-    /* Style the logout button to look like the other links */
     .logout-button {
         background-color: #f8f9fa;
         color: #000000;
@@ -100,12 +94,10 @@
         text-decoration: none;
     }
 
-    /* Add hover effect similar to the links */
     .logout-button:hover {
         background-color: #e2e6ea;
     }
 
-    /* Optional: Remove the button focus outline for consistency */
     .logout-button:focus {
         outline: none;
     }

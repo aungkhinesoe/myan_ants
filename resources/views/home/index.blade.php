@@ -11,10 +11,9 @@
             font-family: Arial, sans-serif;
         }
 
-        /* Background Image */
       .background {
-            height: 500px; /* Maintain height */
-            background-image: url('{{ asset('clean.jpg') }}'); /* Ensure this path is correct */
+            height: 500px; 
+            background-image: url('{{ asset('clean.jpg') }}'); 
             background-size: cover;
             background-position: center;
             position: relative;
