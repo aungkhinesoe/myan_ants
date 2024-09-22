@@ -96,6 +96,8 @@
             text-align: center;
             transition: transform 0.3s;
             color: #000000;
+            align-items: center;
+            justify-content:center;
         }
         .card:hover {
             transform: scale(1.05);
@@ -114,7 +116,7 @@
         .card a {
             text-decoration: none;
             display: block;
-            padding: 10px 0;
+            padding: 15px 20px;
             background-color: #28B446;
             color: white;
             border-radius: 5px;

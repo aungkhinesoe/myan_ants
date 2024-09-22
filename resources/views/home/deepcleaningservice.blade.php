@@ -27,10 +27,11 @@
         }
 
         .service-item img {
-            width: 200px;
+            width: 150px;
             height: 150px;
             object-fit: cover;
-            margin: 10px 0;
+            margin: 20px 0;
+            border-radius: 8px;
         }
 
         .btn-order {
