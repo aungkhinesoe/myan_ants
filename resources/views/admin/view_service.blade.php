@@ -62,6 +62,7 @@
                         <th>Category</th>
                         <th>Price</th>
                         <th>Image</th>
+                        <th>Edit</th> <!-- Added the Edit column -->
                         <th>Delete</th>
                     </tr>
 
@@ -75,6 +76,9 @@
                             <img height="150" src="services/{{$service->image}}">
                         </td>
                         <td>
+                            <a class="btn btn-primary" href="{{url('edit_service', $service->id)}}">Edit</a> <!-- Edit button -->
+                        </td>
+                        <td>
                             <a class="btn btn-danger" onclick="confirmation(event)" href="{{url('delete_service',$service->id)}}">Delete</a>
                         </td>
                     </tr>
@@ -84,7 +88,6 @@
             </div>
         </div>
     </div>
-    <!-- JavaScript files-->
 
     <script type="text/javascript">
         function confirmation(ev)
@@ -94,7 +97,7 @@
 
             swal({
                 title: "Are You Sure to Delete This?",
-                text: "This delete will be parmanent.",
+                text: "This delete will be permanent.",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,

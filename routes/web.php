@@ -43,8 +43,10 @@ Route::post('/confirm-order', [OrderController::class, 'store'])->name('confirm.
 
 Route::get('add_service',[ServiceController::class,'add_service'])->middleware(['auth','admin']);
 Route::post('upload_service',[ServiceController::class,'upload_service'])->middleware(['auth','admin']);
-Route::get('view_service',[ServiceController::class,'view_service'])->middleware(['auth','admin']);
+Route::get('view_service', [ServiceController::class, 'view_service'])->middleware(['auth', 'admin'])->name('view_service');
 Route::get('delete_service/{id}',[ServiceController::class,'delete_service'])->middleware(['auth','admin']);
+Route::get('/edit_service/{id}', [ServiceController::class, 'edit_service'])->name('edit_service');
+Route::post('/update_service/{id}', [ServiceController::class, 'update_service'])->name('update_service');
 
 Route::post('confirm-order',[OrderController::class,'confirm_order'])->middleware(['auth']);
 Route::get('view-orders',[OrderController::class,'view_orders'])->middleware(['auth']);

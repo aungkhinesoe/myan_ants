@@ -79,7 +79,7 @@
                         <h3>{{ $service->title }}</h3>
                         <img src="{{ asset('services/' . $service->image) }}" alt="{{ $service->title }}">
                         <p>{{ $service->description }}</p>
-                        <p>Price: ${{ $service->price }}</p>
+                        <p>Price:{{ $service->price }} Ks</p>
 
                         <!-- Order Now Button -->
                         @if(Auth::check())
