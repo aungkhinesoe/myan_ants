@@ -60,7 +60,7 @@
 </head>
 <body>
     @include('home.header')
-    
+
 
     <div class="container">
     <!-- Back Button aligned under the logo -->
@@ -83,7 +83,7 @@
 
                         <!-- Order Now Button -->
                         @if(Auth::check())
-                        <button class="btn-order" data-toggle="modal" data-target="#orderModal" 
+                        <button class="btn-order" data-toggle="modal" data-target="#orderModal"
                                 onclick="setModalData('{{ $service->title }}', '{{ $service->id }}')">Order Now</button>
                         @else
                             <a href="{{ route('login') }}" class="btn-order">Order Now</a>

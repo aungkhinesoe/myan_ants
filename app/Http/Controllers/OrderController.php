@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NewOrderCreated;
+use App\Events\NotificationEvent;
 use App\Models\Order;
 use App\Models\Service;
 use App\Models\User;
 use App\Notifications\NewOrderNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Notification;
 
 class OrderController extends Controller
 {
@@ -34,14 +38,20 @@ class OrderController extends Controller
         // Save the order to the database
         $order->save();
 
-        // Send notification to admin(s)
-        // $admin = User::where('role', 'admin')->first(); // Assuming you have a role-based system
-        // if ($admin) {
-        //     $admin->notify(new NewOrderNotification($order));
-        // }
+        // Log::info("'Order created:', ['order' => $order]");
 
-        // Redirect back with a success message
+        // Broadcast the event to notify the admin
+        // broadcast(new NewOrderCreated($order))->toOthers();
+
+        // Notify admin users
+        $adminUsers = User::where('usertype', 'admin')->get();
+        Notification::send($adminUsers, new NewOrderNotification($order));
+
+        // Return a JSON response for the AJAX call
+        // return response()->json(['message' => 'Your order has been successfully placed!']);
+
         return redirect()->back()->with('success', 'Your order has been successfully placed!');
+
     }
 
     public function view_orders()
@@ -50,7 +60,7 @@ class OrderController extends Controller
 
         return view('admin.orders' ,compact('orders'));
     }
-    
+
     public function my_orders()
     {
     $orders = Order::where('user_id', Auth::id())->get();

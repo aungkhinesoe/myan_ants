@@ -27,36 +27,16 @@ class NewOrderNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['database', 'broadcast'];
+        return ['database'];
     }
 
-    /**
-     * Get the array representation of the notification.
-     */
-    public function toArray($notifiable)
+    // Define the data to be stored in the database
+    public function toDatabase($notifiable)
     {
         return [
             'order_id' => $this->order->id,
-            'name' => $this->order->name,
-            'email' => $this->order->email,
-            'phone' => $this->order->phone,
-            'address' => $this->order->address,
-            'service' => $this->order->service->name,
+            'message' => 'New order created for ' . $this->order->name,
+            'created_at' => now(),
         ];
-    }
-
-    /**
-     * Get the broadcastable representation of the notification.
-     */
-    public function toBroadcast($notifiable)
-    {
-        return new BroadcastMessage([
-            'order_id' => $this->order->id,
-            'name' => $this->order->name,
-            'email' => $this->order->email,
-            'phone' => $this->order->phone,
-            'address' => $this->order->address,
-            'service' => $this->order->service->name,
-        ]);
     }
 }

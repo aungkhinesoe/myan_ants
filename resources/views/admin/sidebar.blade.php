@@ -11,7 +11,7 @@
       </div>
       <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
       <ul class="list-unstyled">
-              {{-- <li class="active"><a href="index.html"> <i class="icon-home"></i>Home </a></li> --}}
+              <li><a href="{{url('admin/dashboard')}}"> <i class="icon-home"></i>Home </a></li>
 
               <li>
                 <a href="{{url('view-orders')}}"> <i class="icon-grid"></i>
@@ -31,7 +31,6 @@
                 <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                   <li><a href="{{url('add_service')}}">Add Service</a></li>
                   <li><a href="{{url('view_service')}}">View Service</a></li>
-                  <li><a href="#">Page</a></li>
                 </ul>
               </li>
 
