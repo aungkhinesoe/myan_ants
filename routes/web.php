@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontendCategoryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
@@ -50,3 +51,7 @@ Route::post('confirm-order',[OrderController::class,'confirm_order'])->middlewar
 Route::get('view-orders',[OrderController::class,'view_orders'])->middleware(['auth']);
 Route::get('/my-orders', [OrderController::class, 'my_orders'])->middleware('auth')->name('home.order');
 Route::get('/search', [SearchController::class, 'search'])->name('search');
+
+Route::get('/notifications/read/{id}', [NotificationController::class, 'markAsRead'])->name('markAsRead');
+Route::get('/notifications', [NotificationController::class, 'getNotifications'])->name('getNotifications');
+Route::get('/notifications/count', [NotificationController::class, 'getCount']);
