@@ -18,7 +18,7 @@
         <h1>Search Results</h1>
 
         @if($services->isEmpty())
-            <p>No services found for your query.</p>
+            <p>No services found .</p>
         @else
             <ul class="list-group">
                 @foreach($services as $service)
@@ -26,7 +26,7 @@
                         <h5>{{ $service->title }}</h5>
                         <img height="150" src="{{ asset('services/' . $service->image) }}" alt="{{ $service->title }}">
                         <p>{{ $service->description }}</p>
-                        <p><strong>Price:</strong> ${{ $service->price }}</p>
+                        <p><strong>Price:</strong> {{ $service->price }} Ks</p>
                     </li>
                 @endforeach
             </ul>
